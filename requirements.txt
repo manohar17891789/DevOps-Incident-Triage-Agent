@@ -13,5 +13,6 @@ python-dotenv==1.0.1
 sqlalchemy==2.0.36
 tiktoken==0.8.0
 streamlit==1.40.2
+requests==2.32.3
 pytest==8.3.4
 httpx==0.28.1
