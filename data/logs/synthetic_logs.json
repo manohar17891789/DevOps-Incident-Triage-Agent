@@ -1,0 +1,226 @@
+[
+  {
+    "timestamp": "2026-07-01T03:12:04Z",
+    "service": "payments-service",
+    "level": "ERROR",
+    "error_code": "DB_CONN_TIMEOUT",
+    "message": "Failed to acquire connection from pool 'primary-pg' after 5000ms",
+    "stack_trace": "psycopg2.OperationalError: connection to server at \"pg-primary.internal\" (10.0.4.12), port 5432 failed: timeout expired\n  at pool.acquire (db/pool.py:88)\n  at PaymentsRepo.get_by_id (repos/payments_repo.py:41)"
+  },
+  {
+    "timestamp": "2026-07-01T03:12:09Z",
+    "service": "payments-service",
+    "level": "ERROR",
+    "error_code": "DB_CONN_TIMEOUT",
+    "message": "Failed to acquire connection from pool 'primary-pg' after 5000ms",
+    "stack_trace": "psycopg2.OperationalError: connection to server at \"pg-primary.internal\" (10.0.4.12), port 5432 failed: timeout expired\n  at pool.acquire (db/pool.py:88)\n  at PaymentsRepo.create_transaction (repos/payments_repo.py:67)"
+  },
+  {
+    "timestamp": "2026-07-01T03:13:41Z",
+    "service": "checkout-api",
+    "level": "ERROR",
+    "error_code": "DB_CONN_TIMEOUT",
+    "message": "Upstream payments-service returned 503; connection pool exhausted (active=100/100, idle=0)",
+    "stack_trace": "httpx.ReadTimeout: pool exhausted at checkout/client.py:112\n  at CheckoutService.charge (checkout/service.py:203)"
+  },
+  {
+    "timestamp": "2026-07-01T03:15:02Z",
+    "service": "payments-service",
+    "level": "WARN",
+    "error_code": "DB_POOL_SATURATED",
+    "message": "Connection pool 'primary-pg' at 100% utilization for 180s; consider increasing max_connections or investigating long-running queries",
+    "stack_trace": null
+  },
+  {
+    "timestamp": "2026-07-01T03:18:30Z",
+    "service": "payments-service",
+    "level": "INFO",
+    "error_code": null,
+    "message": "Connection pool 'primary-pg' recovered after manual pgbouncer restart, active=12/100",
+    "stack_trace": null
+  },
+  {
+    "timestamp": "2026-07-03T14:02:11Z",
+    "service": "recommendation-engine",
+    "level": "WARN",
+    "error_code": "HIGH_MEM_USAGE",
+    "message": "Container memory usage at 82% (3.2GB/4GB), up from 45% at deploy time (6h ago)",
+    "stack_trace": null
+  },
+  {
+    "timestamp": "2026-07-03T15:47:55Z",
+    "service": "recommendation-engine",
+    "level": "WARN",
+    "error_code": "HIGH_MEM_USAGE",
+    "message": "Container memory usage at 94% (3.76GB/4GB); GC pause time increased to 850ms",
+    "stack_trace": null
+  },
+  {
+    "timestamp": "2026-07-03T16:03:22Z",
+    "service": "recommendation-engine",
+    "level": "ERROR",
+    "error_code": "OOM_KILLED",
+    "message": "Container recommendation-engine-7f9b8 killed by OOMKiller (cgroup memory limit 4096Mi)",
+    "stack_trace": "kernel: Memory cgroup out of memory: Killed process 1 (python) total-vm:5230144kB, anon-rss:4192800kB"
+  },
+  {
+    "timestamp": "2026-07-03T16:03:40Z",
+    "service": "recommendation-engine",
+    "level": "INFO",
+    "error_code": null,
+    "message": "Pod restarted by kubelet, restart count now 3 in last 2h",
+    "stack_trace": null
+  },
+  {
+    "timestamp": "2026-07-04T09:11:02Z",
+    "service": "notification-worker",
+    "level": "WARN",
+    "error_code": "HIGH_MEM_USAGE",
+    "message": "Worker process RSS growing ~120MB/hour since deploy of v2.14.0, currently at 2.9GB",
+    "stack_trace": null
+  },
+  {
+    "timestamp": "2026-07-04T22:40:17Z",
+    "service": "notification-worker",
+    "level": "ERROR",
+    "error_code": "OOM_KILLED",
+    "message": "Worker process killed by OOMKiller; suspected leak in email template cache (unbounded dict, never evicted)",
+    "stack_trace": "kernel: oom-kill: task=notification-worker,pid=4821 total-vm:6120212kB, anon-rss:6001048kB"
+  },
+  {
+    "timestamp": "2026-07-05T10:20:00Z",
+    "service": "user-service",
+    "level": "ERROR",
+    "error_code": "DEPLOY_FAILED",
+    "message": "Deployment v3.8.1 rollout failed: readiness probe failing on 3/3 replicas after 120s",
+    "stack_trace": "kubectl rollout status timed out waiting for condition\n  Events: Readiness probe failed: HTTP probe failed with statuscode: 500"
+  },
+  {
+    "timestamp": "2026-07-05T10:20:05Z",
+    "service": "user-service",
+    "level": "ERROR",
+    "error_code": "CONFIG_MISSING",
+    "message": "Startup failed: environment variable USER_DB_SECRET_KEY not found in ConfigMap 'user-service-config-v3.8.1'",
+    "stack_trace": "Traceback (most recent call last):\n  File \"app/main.py\", line 22, in <module>\n    settings = Settings()\nKeyError: 'USER_DB_SECRET_KEY'"
+  },
+  {
+    "timestamp": "2026-07-05T10:22:30Z",
+    "service": "user-service",
+    "level": "INFO",
+    "error_code": null,
+    "message": "Automatic rollback to v3.8.0 triggered by deploy pipeline after 3 failed health checks",
+    "stack_trace": null
+  },
+  {
+    "timestamp": "2026-07-06T08:00:14Z",
+    "service": "gateway",
+    "level": "ERROR",
+    "error_code": "DEPLOY_FAILED",
+    "message": "Canary deployment gateway-v5.2.0 aborted: error rate 18% exceeds 5% threshold during 10% traffic shift",
+    "stack_trace": "canary-analysis: threshold breach on metric http_5xx_ratio (0.18 > 0.05)"
+  },
+  {
+    "timestamp": "2026-07-06T08:00:20Z",
+    "service": "gateway",
+    "level": "ERROR",
+    "error_code": "NULL_POINTER",
+    "message": "Unhandled exception in request middleware after v5.2.0 canary: NoneType has no attribute 'headers'",
+    "stack_trace": "Traceback (most recent call last):\n  File \"gateway/middleware/auth.py\", line 54, in process\n    token = request.headers.get('Authorization')\nAttributeError: 'NoneType' object has no attribute 'headers'"
+  },
+  {
+    "timestamp": "2026-07-06T18:05:00Z",
+    "service": "auth-service",
+    "level": "ERROR",
+    "error_code": "TOKEN_EXPIRED",
+    "message": "JWT validation failed for 1,204 requests in last 5m: token exp claim in the past",
+    "stack_trace": "jwt.ExpiredSignatureError: Signature has expired\n  at TokenValidator.verify (auth/jwt.py:77)"
+  },
+  {
+    "timestamp": "2026-07-06T18:05:12Z",
+    "service": "gateway",
+    "level": "ERROR",
+    "error_code": "TOKEN_EXPIRED",
+    "message": "Upstream auth-service rejected 401 for service-to-service call; cached token last refreshed 26h ago (expected refresh every 1h)",
+    "stack_trace": "httpx.HTTPStatusError: 401 Client Error for url: https://auth-service.internal/verify\n  at GatewayAuthClient.call (gateway/clients/auth_client.py:33)"
+  },
+  {
+    "timestamp": "2026-07-06T18:06:45Z",
+    "service": "auth-service",
+    "level": "WARN",
+    "error_code": "REFRESH_CRON_MISSING",
+    "message": "Token refresh cronjob 'token-refresher' last successful run: 2026-07-05T16:00:00Z (expected hourly); job appears disabled since config sync",
+    "stack_trace": null
+  },
+  {
+    "timestamp": "2026-07-06T18:10:00Z",
+    "service": "auth-service",
+    "level": "INFO",
+    "error_code": null,
+    "message": "Token refresh cronjob re-enabled manually; new token issued, service-to-service calls recovering",
+    "stack_trace": null
+  },
+  {
+    "timestamp": "2026-07-07T11:30:00Z",
+    "service": "checkout-api",
+    "level": "ERROR",
+    "error_code": "RATE_LIMIT_EXCEEDED",
+    "message": "429 responses spiking: 3,450 requests/min from single client_id 'partner-integration-07', limit is 1000/min",
+    "stack_trace": "RateLimitExceeded: client_id=partner-integration-07 exceeded 1000 req/min (current: 3450)\n  at RateLimiter.check (middleware/rate_limit.py:29)"
+  },
+  {
+    "timestamp": "2026-07-07T11:31:20Z",
+    "service": "inventory-service",
+    "level": "ERROR",
+    "error_code": "RATE_LIMIT_EXCEEDED",
+    "message": "Downstream calls from checkout-api throttled: 429 returned for /inventory/reserve, retry-after=60",
+    "stack_trace": "RateLimitExceeded: caller=checkout-api endpoint=/inventory/reserve limit=2000/min current=2600\n  at RateLimiter.check (middleware/rate_limit.py:29)"
+  },
+  {
+    "timestamp": "2026-07-07T11:40:00Z",
+    "service": "checkout-api",
+    "level": "WARN",
+    "error_code": "RETRY_STORM",
+    "message": "Client retry storm detected: partner-integration-07 retrying failed 429s with no backoff, amplifying load",
+    "stack_trace": null
+  },
+  {
+    "timestamp": "2026-07-07T12:05:00Z",
+    "service": "checkout-api",
+    "level": "INFO",
+    "error_code": null,
+    "message": "Temporary rate limit override applied for partner-integration-07 (2000/min) while their team fixes retry logic",
+    "stack_trace": null
+  },
+  {
+    "timestamp": "2026-07-08T02:00:00Z",
+    "service": "payments-service",
+    "level": "ERROR",
+    "error_code": "DB_CONN_TIMEOUT",
+    "message": "Nightly batch reconciliation job holding 40 long-running connections, starving pool for live traffic",
+    "stack_trace": "psycopg2.OperationalError: connection to server at \"pg-primary.internal\" (10.0.4.12), port 5432 failed: timeout expired\n  at BatchReconciler.run (jobs/reconcile.py:19)"
+  },
+  {
+    "timestamp": "2026-07-08T09:15:00Z",
+    "service": "recommendation-engine",
+    "level": "ERROR",
+    "error_code": "OOM_KILLED",
+    "message": "Second OOMKill this week; heap dump shows unbounded growth in LRUCache (no max_size set) added in v2.9.0",
+    "stack_trace": "kernel: oom-kill: task=recommendation-engine,pid=991 total-vm:5230144kB, anon-rss:4193000kB"
+  },
+  {
+    "timestamp": "2026-07-09T07:45:00Z",
+    "service": "user-service",
+    "level": "ERROR",
+    "error_code": "DEPLOY_FAILED",
+    "message": "Deployment v3.9.0 rollout failed: database migration 0047_add_user_flags timed out after 300s on users table (18M rows)",
+    "stack_trace": "sqlalchemy.exc.OperationalError: (psycopg2.errors.LockNotAvailable) canceling statement due to lock timeout\n  at migrations/0047_add_user_flags.py:14"
+  },
+  {
+    "timestamp": "2026-07-09T18:22:00Z",
+    "service": "gateway",
+    "level": "ERROR",
+    "error_code": "TOKEN_EXPIRED",
+    "message": "Spike in 401s for internal service calls after certificate rotation; auth-service issuing tokens with old signing key still cached by gateway",
+    "stack_trace": "jwt.InvalidSignatureError: Signature verification failed\n  at TokenValidator.verify (auth/jwt.py:81)"
+  }
+]
