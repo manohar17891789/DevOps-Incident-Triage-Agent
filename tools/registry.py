@@ -45,11 +45,11 @@ def call_tool(tool_name: str, raw_input: dict) -> dict:
     the tool rather than crashing.
     """
     spec = TOOL_REGISTRY[tool_name]
-    validated_input = spec.input_model(**raw_input)
 
     last_error: str | None = None
     for _ in range(2):
         try:
+            validated_input = spec.input_model(**raw_input)
             output = spec.func(validated_input)
             return output.model_dump()
         except Exception as exc:  # noqa: BLE001 - tool failures must not crash the agent
