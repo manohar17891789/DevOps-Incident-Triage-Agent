@@ -10,6 +10,8 @@
   cap was hit without any successful tool call, confidence is capped and
   insufficient_evidence is set so the API response is honest about it.
 """
+from __future__ import annotations
+
 from typing import Any, Literal
 
 from langchain_core.messages import HumanMessage, SystemMessage

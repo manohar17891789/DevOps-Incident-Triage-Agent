@@ -4,6 +4,8 @@ Embeddings come from OpenAI (text-embedding-3-small). The index is built
 once from data/runbooks/*.md and cached to disk under data/faiss_index/ so
 repeated agent runs don't re-embed the corpus every time.
 """
+from __future__ import annotations
+
 from pathlib import Path
 
 from langchain_community.vectorstores import FAISS

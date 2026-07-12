@@ -1,4 +1,6 @@
 """Tool registry + retry-once wrapper used by the agent's call_tool node."""
+from __future__ import annotations
+
 from dataclasses import dataclass
 from typing import Callable
 
