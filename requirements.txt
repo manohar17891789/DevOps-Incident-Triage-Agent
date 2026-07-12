@@ -11,7 +11,6 @@ faiss-cpu>=1.8.0
 numpy>=1.26,<3.0
 python-dotenv==1.0.1
 sqlalchemy==2.0.36
-psycopg2-binary==2.9.10
 tiktoken==0.8.0
 streamlit==1.40.2
 requests==2.32.3
